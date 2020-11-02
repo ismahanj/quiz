@@ -19,7 +19,7 @@ startBtn.addEventListener("click", function play(){
     info.classList.remove("activeInfo")
     quizBox.classList.add("activeQuiz")
     // calling questions function
-    displayQ(); 
+    displayQ(0); 
 })
 
 // set the score to zero 
@@ -57,20 +57,20 @@ var ask = [
     }
     ]
 // function for displaying the questions 
-function displayQ (){
+function displayQ (index){
  
     var question = document.querySelector(".questions")
     var answers = document.querySelector(".answers")
     var next = quizBox.querySelector(".startBtn")
-    next.addEventListener("click", function(){
-    for (let i = 0; i < ask.length; i++) {
-        question.appendChild('<p>' + ask[i].q + '<p>')
-       }
-        
-        
-    })
+    question.innerHTML = '<p>' + ask[index].q + '<p>'
+    answers.innerHTML = '<div>' + ask[index].a[0] + '<div>'
+    answers.innerHTML = '<div>' + ask[index].a[1] + '<div>'
+    answers.innerHTML = '<div>' + ask[index].a[2] + '<div>'
+    answers.innerHTML = '<div>' + ask[index].a[3] + '<div>'
+
+
+}
    
     // answers.innerHTML = 
 
  
-}
