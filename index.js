@@ -22,8 +22,6 @@ startBtn.addEventListener("click", function play(){
     displayQ(0); 
 })
 
-// set the score to zero 
-// let score = 0 
 
 // questions and answer options 
 var ask = [
@@ -56,17 +54,25 @@ var ask = [
         a: ["on the bottom of the page", "on the nav-bar", "in the console", "none of these"]
     }
     ]
+    // set the question count to zero 
+     var questionCount = 0
+    //  when the next button is clicked increment the question count 
+    var next = quizBox.querySelector(".startBtn")
+    next.addEventListener("click", function(){
+        questionCount++
+        displayQ(questionCount)
+    })
 // function for displaying the questions 
 function displayQ (index){
  
     var question = document.querySelector(".questions")
     var answers = document.querySelector(".answers")
-    var next = quizBox.querySelector(".startBtn")
+    
     question.innerHTML = '<p>' + ask[index].q + '<p>'
     answers.innerHTML = '<div>' + ask[index].a[0] + '<div>'
-    answers.innerHTML = '<div>' + ask[index].a[1] + '<div>'
-    answers.innerHTML = '<div>' + ask[index].a[2] + '<div>'
-    answers.innerHTML = '<div>' + ask[index].a[3] + '<div>'
+                     + '<div>' + ask[index].a[1] + '<div>'
+                    + '<div>' + ask[index].a[2] + '<div>'
+                    + '<div>' + ask[index].a[3] + '<div>'
 
 
 }
