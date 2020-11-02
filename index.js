@@ -28,11 +28,12 @@ var ask = [
     {
         q: "1. where do you attach the script tags of a JS in HTML page?", 
         a: [
-            "after the of the closing HTML tag", 
+            "after the closing HTML tag", 
             "middle of the HTML page", 
             "head or last line of the body", 
             "no where"
-        ]
+        ], 
+        correctA: "head or last line of the body"
     }, 
     {
         q:"2. what do you use JS for", 
@@ -41,7 +42,8 @@ var ask = [
             "add interactive components", 
             "get more traffic to the website", 
             "none of these"
-        ]
+        ], 
+        correctA: "add interactive components"
     }, 
     {
         q:"3. what is an array",
@@ -50,7 +52,8 @@ var ask = [
             "a rainbow", 
             "collection of things", 
             "none of these"
-        ]
+        ], 
+        correctA: "collection of things", 
     }, 
     {
         q:"4. what can you use a variable for", 
@@ -59,7 +62,8 @@ var ask = [
             "something that stands out", 
             "way to store information", 
             "none of these"
-        ]
+        ], 
+        correctA: "way to store information",  
     },
     {
         q: "5. how do you join two or more variables together", 
@@ -68,7 +72,8 @@ var ask = [
             "var 1, var 2", 
             "var 1/var 2", 
             "none of these"
-        ]
+        ], 
+        correctA: "var 1 + var 2", 
     }, 
     {
         q: "6. what is the difference between console.log and alert",
@@ -77,15 +82,18 @@ var ask = [
             "console.log is a equation and alert is a pop up", 
             "console.log is recorded in the dev-tools and alert is a pop-up", 
             "none of these"
-        ]
+        ], 
+        correctA: "console.log is recorded in the dev-tools and alert is a pop-up",  
     }, 
     {
         q: "7. where are errors coming from the JS file logged on the browser", 
         a: [
             "on the bottom of the page", 
-            "on the nav-bar", "in the console", 
+            "on the nav-bar", 
+            "in the console", 
             "none of these"
-        ]
+        ], 
+        correctA: "in the console",   
     }
     ]
     // set the question count to zero 

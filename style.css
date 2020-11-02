@@ -84,12 +84,11 @@ body{
     pointer-events: auto;
     transform: translate(-50%, -50%)scale(1)
 }
-section{
+section{ 
     margin-top: 20px
 }
 header{
-    height: 50px;
-    box-shadow: gray;
+    height: 29px;
     text-align: center; 
     
 }
@@ -101,8 +100,10 @@ header{
 }
 .answers div{
     background: silver; 
-   
-    border: 1px solid;
+    border: .5px solid;
+    display: block; 
+    margin-top: 20px;  
+    
    
 
 }
