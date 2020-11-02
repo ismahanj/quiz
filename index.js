@@ -27,31 +27,65 @@ startBtn.addEventListener("click", function play(){
 var ask = [
     {
         q: "1. where do you attach the script tags of a JS in HTML page?", 
-        a: ["after the of the closing HTML tag", "middle of the HTML page", "head or last line of the body", "no where"]
+        a: [
+            "after the of the closing HTML tag", 
+            "middle of the HTML page", 
+            "head or last line of the body", 
+            "no where"
+        ]
     }, 
     {
         q:"2. what do you use JS for", 
-        a: ["style the website", "add interactive components", "get more traffic to the website", "none of these"]
+        a: [
+            "style the website", 
+            "add interactive components", 
+            "get more traffic to the website", 
+            "none of these"
+        ]
     }, 
     {
         q:"3. what is an array",
-        a: ["colorful pattern", "a rainbow", "collection of things", "none of these"]
+        a: [
+            "colorful pattern", 
+            "a rainbow", 
+            "collection of things", 
+            "none of these"
+        ]
     }, 
     {
         q:"4. what can you use a variable for", 
-        a: ["a random letter", "something that stands out", "way to store information", "none of these"]
+        a: [
+            "a random letter", 
+            "something that stands out", 
+            "way to store information", 
+            "none of these"
+        ]
     },
     {
         q: "5. how do you join two or more variables together", 
-        a: ["var 1 + var 2", "var 1, var 2", "var 1/var 2", "none of these"]
+        a: [
+            "var 1 + var 2", 
+            "var 1, var 2", 
+            "var 1/var 2", 
+            "none of these"
+        ]
     }, 
     {
         q: "6. what is the difference between console.log and alert",
-        a: ["alert is a warning and console.log is a reminder", "console.log is a equation and alert is a pop up", "console.log is recorded in the dev-tools and alert is a pop-up", "none of these"]
+        a: [
+            "alert is a warning and console.log is a reminder", 
+            "console.log is a equation and alert is a pop up", 
+            "console.log is recorded in the dev-tools and alert is a pop-up", 
+            "none of these"
+        ]
     }, 
     {
         q: "7. where are errors coming from the JS file logged on the browser", 
-        a: ["on the bottom of the page", "on the nav-bar", "in the console", "none of these"]
+        a: [
+            "on the bottom of the page", 
+            "on the nav-bar", "in the console", 
+            "none of these"
+        ]
     }
     ]
     // set the question count to zero 
@@ -59,8 +93,13 @@ var ask = [
     //  when the next button is clicked increment the question count 
     var next = quizBox.querySelector(".startBtn")
     next.addEventListener("click", function(){
-        questionCount++
+        if(questionCount < ask.length -1){
+            questionCount++
         displayQ(questionCount)
+        } else {
+            console.log("finished quiz")
+        }
+        
     })
 // function for displaying the questions 
 function displayQ (index){
@@ -73,10 +112,19 @@ function displayQ (index){
                      + '<div>' + ask[index].a[1] + '<div>'
                     + '<div>' + ask[index].a[2] + '<div>'
                     + '<div>' + ask[index].a[3] + '<div>'
-
+    var answers = answers.querySelectorAll("div")
+    for (let i = 0; i < answers.length; i++) {
+       answers[i].setAttribute("onclick", "answerSelected(this)")
+        
+    }
 
 }
+
+ function answerSelected(answer){
+     var userAnswer = answer.textContent; 
+     console.log(userAnswer)
+ }
    
-    // answers.innerHTML = 
+
 
  
