@@ -116,13 +116,13 @@ function displayQ (index){
     var answers = document.querySelector(".answers")
     
     question.innerHTML = '<p>' + ask[index].q + '<p>'
-    answers.innerHTML = '<div>' + ask[index].a[0] + '<div>'
-                     + '<div>' + ask[index].a[1] + '<div>'
-                    + '<div>' + ask[index].a[2] + '<div>'
-                    + '<div>' + ask[index].a[3] + '<div>'
-    var answers = answers.querySelectorAll("div")
-    for (let i = 0; i < answers.length; i++) {
-       answers[i].setAttribute("onclick", "answerSelected(this)")
+    answers.innerHTML = '<div class="ansList">' + ask[index].a[0] + '<div class="ansList">'
+                     + '<div class="ansList">' + ask[index].a[1] + '<div class="ansList">'
+                    + '<div class="ansList">' + ask[index].a[2] + '<div class="ansList">'
+                    + '<div class="ansList">' + ask[index].a[3] + '<div class="ansList">'
+    var ansList = answers.querySelectorAll(".ansList")
+    for (let i = 0; i < ansList.length; i++) {
+       ansList[i].setAttribute("onclick", "answerSelected(this)")
         
     }
 
@@ -130,7 +130,13 @@ function displayQ (index){
 
  function answerSelected(answer){
      var userAnswer = answer.textContent; 
-     console.log(userAnswer)
+     var correctAns = ask[questionCount].correctA; 
+     if(userAnswer === correctAns){
+        console.log("answer is correct")
+     }else {
+         console.log("wrong answer")
+     }
+    
  }
    
 

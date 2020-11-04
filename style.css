@@ -98,7 +98,7 @@ header{
     text-align: center; 
      margin-bottom: 20px;  
 }
-.answers div{
+.ansList{
     background: silver; 
     border: .5px solid;
     display: block; 
