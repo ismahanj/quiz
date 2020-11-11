@@ -3,6 +3,9 @@ var info = document.querySelector(".info")
 var startBtn = info.querySelector(".startBtn")
 var quit = info.querySelector(".quitBtn")
 var quizBox = document.querySelector(".quizBox")
+var timer = quizBox.querySelector(".timer .timer-sec")
+var results = document.querySelector(".results")
+
 
 // when start is click
 start.addEventListener("click", function start(){
@@ -20,6 +23,8 @@ startBtn.addEventListener("click", function play(){
     quizBox.classList.add("activeQuiz")
     // calling questions function
     displayQ(0); 
+    // start timer
+    setTimer(timeValue)
 })
 
 
@@ -98,47 +103,96 @@ var ask = [
     ]
     // set the question count to zero 
      var questionCount = 0
+     //set timer 
+     var counter;
+     //define time value 
+     var timeValue = 15
+    //  set score 0
+    var score = 0 
+
+    
     //  when the next button is clicked increment the question count 
     var next = quizBox.querySelector(".startBtn")
     next.addEventListener("click", function(){
-        if(questionCount < ask.length -1){
+        setTimer(timeValue)
+         //resarting the timer
+         clearInterval(counter)
+        
+        
+        if(questionCount < ask.length){
             questionCount++
         displayQ(questionCount)
+        
         } else {
             console.log("finished quiz")
+            showResults()
         }
         
     })
-// function for displaying the questions 
+// function for displaying the questions and answer
 function displayQ (index){
  
     var question = document.querySelector(".questions")
     var answers = document.querySelector(".answers")
-    
-    question.innerHTML = '<p>' + ask[index].q + '<p>'
-    answers.innerHTML = '<div class="ansList">' + ask[index].a[0] + '<div class="ansList">'
-                     + '<div class="ansList">' + ask[index].a[1] + '<div class="ansList">'
-                    + '<div class="ansList">' + ask[index].a[2] + '<div class="ansList">'
-                    + '<div class="ansList">' + ask[index].a[3] + '<div class="ansList">'
-    var ansList = answers.querySelectorAll(".ansList")
+
+    for (let i = 0; i < ask.length; i++) {
+        question.innerHTML = '<p>' + ask[index].q + '<p>'
+        
+    }
+  
+    answers.innerHTML = '<div class="ansList">' + ask[index].a[0] + '<span></span></div>'
+                     + '<div class="ansList">' + ask[index].a[1] + '<span></span></div>'
+                    + '<div class="ansList">' + ask[index].a[2] + '<span></span></div>'
+                    + '<div class="ansList">' + ask[index].a[3] + '<span></span></div>'
+//looping through the answer list then deciding which is correct
+     var ansList = answers.querySelectorAll(".ansList")
     for (let i = 0; i < ansList.length; i++) {
        ansList[i].setAttribute("onclick", "answerSelected(this)")
         
     }
 
 }
-
+//setting correct answer
  function answerSelected(answer){
+    clearInterval(counter)
      var userAnswer = answer.textContent; 
-     var correctAns = ask[questionCount].correctA; 
+     var correctAns = ask[questionCount].correctA;
+    //  var allAns = answer.children.length 
      if(userAnswer === correctAns){
         console.log("answer is correct")
+        score ++
      }else {
          console.log("wrong answer")
+         score --; 
+        
+
      }
+    }
+
+    //setting timer 
     
- }
-   
+    function setTimer (time){
+        counter = setInterval(countDown, 1000);
+        function countDown (){
+            timer.textContent = time
+            time--;
+            if(time < 0){
+                clearInterval(counter)
+                timer.textContent = 00
+            }
+        }
+
+    }
+
+   function showResults(){
+    quizBox.classList.remove("activeQuiz")
+       
+       info.classList.remove("activeInfo")
+       
+       results.classList.add("activeResults")
+       results.innerHTML = '<div class="score">' + score + '<span></span></div>'
+    
+   }
 
 
  
