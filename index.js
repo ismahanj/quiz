@@ -22,7 +22,7 @@ startBtn.addEventListener("click", function play(){
     info.classList.remove("activeInfo")
     quizBox.classList.add("activeQuiz")
     // calling questions function
-    displayQ(0); 
+    displayQ(questionCount); 
     // start timer
     setTimer(timeValue)
 })
@@ -106,9 +106,9 @@ var ask = [
      //set timer 
      var counter;
      //define time value 
-     var timeValue = 15
+     var timeValue = 60
     //  set score 0
-    var score = 0 
+    var correctAnswer = 0 
 
     
     //  when the next button is clicked increment the question count 
@@ -119,7 +119,7 @@ var ask = [
          clearInterval(counter)
         
         
-        if(questionCount < ask.length){
+        if(questionCount < ask.length -1){
             questionCount++
         displayQ(questionCount)
         
@@ -154,16 +154,15 @@ function displayQ (index){
 }
 //setting correct answer
  function answerSelected(answer){
-    clearInterval(counter)
      var userAnswer = answer.textContent; 
      var correctAns = ask[questionCount].correctA;
     //  var allAns = answer.children.length 
      if(userAnswer === correctAns){
         console.log("answer is correct")
-        score ++
+        correctAnswer ++; 
      }else {
          console.log("wrong answer")
-         score --; 
+         counter -10; 
         
 
      }
@@ -185,14 +184,16 @@ function displayQ (index){
     }
 
    function showResults(){
+    info.classList.remove("activeInfo")
     quizBox.classList.remove("activeQuiz")
-       
-       info.classList.remove("activeInfo")
-       
-       results.classList.add("activeResults")
-       results.innerHTML = '<div class="score">' + score + '<span></span></div>'
+    results.classList.add("activeResults")
     
-   }
+    var name = document.getElementById("name").value;
+
+  document.getElementById("finalScore").innerHTML =
+    name + " score is " + correctAnswer;
+}
+    
 
 
  
